@@ -100,9 +100,23 @@ the week was the most common for garbage removal?
 
 var dataset = 'https://raw.githubusercontent.com/CPLN690-MUSA610/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson';
 
-var myStyle = function(feature) {
-  return {};
+var listOfDays = ["MON", "TUE", "WED","TRU","FRI"];
+
+var myFilter = function(feature) {
+  if(_.contains(listOfDays, feature.properties.COLLDAY)) {
+    return true;
+}
 };
+var myStyle = function(feature) {
+    switch(feature.properties.COLLDAY){
+    case "MON": return{fillColor: 'red' , fillOpacity:1};
+    case "TUE": return{fillColor:'yellow', fillOpacity:1};
+    case "WED": return{fillColor:'purple', fillOpacity:1};
+    case "THU": return{fillColor:'blue', fillOpacity:1};
+    case "FRI": return{fillColor:'green', fillOpacity:1};
+
+  }};
+
 
 var eachFeature = function(feature, layer) {
   layer.on('click', function (e) {
@@ -111,14 +125,16 @@ var eachFeature = function(feature, layer) {
     Check out feature.properties to see some useful data about the feature that
     you can use in your application.
     ===================== */
-    console.log(feature);
-    showResults();
-  });
+    switch(feature.properties.COLLDAY){
+    case"MON":$("h1").text("Monday");break;
+    case"TUE":$("h1").text("Tuesday");break;
+    case"WED":$("h1").text("Wednesday");break;
+    case"THU":$("h1").text("Thursday");break;
+    case"FRI":$("h1").text("Friday");break;
+  }
+  })
 };
 
-var myFilter = function(feature) {
-  return true;
-};
 
 $(document).ready(function() {
   $.ajax(dataset).done(function(data) {

@@ -29,6 +29,41 @@ p.main {
 
 .legend {
   position: absolute;
-  background-color: #fff;
+  background-color: red;
+  height: 40px;
+  z-index: 1000;
+  top: 20px;
+  right: 300px;
+}
+.legend2 {
+  position: absolute;
+  background-color: yellow;
+  z-index: 1000;
+  height: 40px;
+  top:20px;
+  right:240px;
+}
+.legend3 {
+  position: absolute;
+  background-color: purple;
   z-index: 2000;
+  height:40px;
+  top:20px;
+  right:160px;
+}
+.legend4 {
+  position: absolute;
+  background-color: blue;
+  z-index: 2000;
+  height:40px;
+  top:20px;
+  right:120px;
+}
+.legend5 {
+  position: absolute;
+  background-color: green;
+  z-index: 2000;
+  height:40px;
+  top:20px;
+  right:80px;
 }
